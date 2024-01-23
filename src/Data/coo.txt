@@ -1,0 +1,78 @@
+Beit Lahia, Al Jeser st
+Exit to Salah aldeen st, Beit Lahia
+Gaza, Exit to Salah aldeen st
+Beit Hanoun, Al Jeser st
+Jabalia, Salah al deen Jabalia
+Beit Hanoun, Salah al deen Jabalia
+AL Falouja st, Beit Lahia
+Jabalia, AL Falouja st
+Gaza, Salah al deen Gaza st
+AL Karameh Beit Hanoun st, Salah al deen Gaza st
+Jabalia, Al Horreya st
+Gaza, Al Horreya st
+Jabalia, Al sawafty st Kamal Naser st
+Al sawafty st Kamal Naser st, RIMAL
+Beit Lahia, al Toam st
+al Toam st, Al-Shati Camp
+RIMAL, Khaled al hasan Rimal st
+Khaled al hasan Rimal st, Al-Shati Camp
+Zeitoun, Al quds st Al Saftawt st
+Al quds st Al Saftawt st, Jabalia
+Zeitoun, Al thawra Zeitoun st
+RIMAL, Al thawra Zeitoun st
+Gaza, Omar Al Mukhtar Zeitoun st
+Omar Al Mukhtar Zeitoun st, Zeitoun
+Beit Hanoun, AL Karameh Beit Hanoun st
+CrossRoads juhor ad Dik, AL Karameh Beit Hanoun st
+CrossRoads juhor ad Dik, Juhor ad Dik
+Al Mansoura st, CrossRoads juhor ad Dik
+CrossRoads juhor ad Dik, CrossRoads Salah Al Deen juhor ad Dik
+CrossRoads Salah Al Deen juhor ad Dik, bureij CrossRoads
+Al Mughraqa, CrossRoads Salah Al Deen juhor ad Dik
+Bureij, bureij CrossRoads
+Nuseirat Camp, Izz el Dein Al Qassam Nuseirat st
+Izz el Dein Al Qassam Nuseirat st, CrossRoads Salah Al Deen juhor ad Dik
+bureij CrossRoads, Izz el Dein Al Qassam Nuseirat st
+Juhor ad Dik Bureij st, Juhor ad Dik
+Juhor ad Dik Bureij st, Bureij
+Az Zawayda, Zawayda Maghazi CrossRoad
+Zawayda Maghazi CrossRoad, Maghazi
+CrossRoads Salah Al Deen juhor ad Dik, Zawayda Maghazi CrossRoad
+Maghazi, Khalid Ibn El-Walid St
+Khalid Ibn El-Walid St, Al Musaddar
+Al Musaddar, Zawayda Maghazi CrossRoad
+Deir al Balah CrossRoads, Zawayda Maghazi CrossRoad
+Al Musaddar, Deir al Balah CrossRoads
+Deir al Balah CrossRoads, Deir al Balah
+Mohammad Al Azayza Wadi as Salqa st, Wadi as Salqa
+Mohammad Al Azayza Wadi as Salqa st, Deir al Balah CrossRoads
+Al Musaddar, Wadi as Salqa
+Wadi as Salqa Al Qarara st, Wadi as Salqa
+Wadi as Salqa Al Qarara st, Al Qarara
+Deir al Balah CrossRoads, Al Qarara CrossRoads
+Al Qarara CrossRoads, Khan Yunis Square
+Khan Yunis, Khan Yunis Square
+Abasan al-Kabira CrossRoads, Abasan al-Kabira
+Abasan al-Kabira CrossRoads, Khan Yunis Square
+Khuza'a CrossRoads, Khuza'a
+Khuza'a CrossRoads, Abasan al-Kabira
+Aljamiain st, Khirbat Ikhza'a
+Aljamiain st, Khuza'a
+Rabaih st, Aljamiain st
+Rabaih st, Al Fukhkhari
+Al Rodah Fukhkhari st, Khan Yunis Square
+Al Fukhkhari CrossRoads, Al Fukhkhari
+Al Fukhkhari Salah al deen CrossRoads, Al Fukhkhari
+Al Fukhkhari Salah al deen CrossRoads, Gush Katif st
+Al Fukhkhari Salah al deen CrossRoads, Al-Imam Ali St
+Rafah, Al-Imam Ali St
+Al-Imam Ali St, Gush Katif st
+Khan Yunis Square, Gush Katif st
+Tal Al Sultan CrossRoads, Al-Imam Ali St
+Tal Al Sultan CrossRoads, Rafah
+Tal as Sultan, Tal Al Sultan CrossRoads
+Helmi Saqr Sultan Mosque, Tal as Sultan
+Helmi Saqr Sultan Mosque, Al Mawasi CrossRoads
+El Basheer st, Al Mawasi CrossRoads
+El Basheer st, Khan Yunis
+Al-Imam Ali St, Helmi Saqr Sultan Mosque
