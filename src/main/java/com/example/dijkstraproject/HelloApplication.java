@@ -51,7 +51,7 @@ public class HelloApplication extends Application {
         TextPath.setPrefWidth(375);
         TextPath.setPrefHeight(149);
 
-        TextPath.setLayoutX(190);
+        TextPath.setLayoutX(250);
         TextPath.setLayoutY(446);
         Image imgpath = new Image("file:/C:/Users/ahmad/Downloads/1pro2+3/DijkstraProject/src/gaza1.png");
         ImageView myImage = new ImageView(imgpath);
@@ -123,6 +123,8 @@ public class HelloApplication extends Application {
 //                cityLabel.setLayoutY(d[1] - 15);
 //                group.getChildren().add(cityLabel);
 //                cityLabel.setStyle("-fx-font-size: 10px;");
+                b.setPrefWidth(8);
+                b.setPrefHeight(8);
                 b.setStyle(
                         "-fx-background-color: #fc7f8f; " +
                                 "-fx-text-fill: white; " +
@@ -179,6 +181,17 @@ public class HelloApplication extends Application {
             }
         }
         Button find = new Button("Find shortest path");
+        find.setStyle(
+                "-fx-background-color: linear-gradient(to right,#00acc1, #9ce8ec); " +
+                        "-fx-text-fill: white; " +
+                        "-fx-font-size: 14px; " +
+                        "-fx-min-width: 140px; " +
+                        "-fx-min-height: 30px; " +
+                        "-fx-max-width: 80px; " +
+                        "-fx-max-height: 30px; " +
+                        "-fx-border-color: #45a080; " +
+                        "-fx-border-radius: 50%; "
+        );
 
 
         Dijkstra dijkstra = new Dijkstra();
@@ -242,6 +255,18 @@ public class HelloApplication extends Application {
 
         List.getChildren().addAll(src, source, dst, Dist, find);
         Button clearButton = new Button("Clear");
+        clearButton.setStyle(
+                "-fx-background-color: linear-gradient(to right,#00acc1, #9ce8ec); " +
+                        "-fx-text-fill: white; " +
+                        "-fx-font-size: 14px; " +
+                        "-fx-min-width: 80px; " +
+                        "-fx-min-height: 30px; " +
+                        "-fx-max-width: 80px; " +
+                        "-fx-max-height: 30px; " +
+                        "-fx-border-color: #45a080; " +
+                        "-fx-border-width: 2px; " +
+                        "-fx-border-radius: 10px; "
+        );
         List.getChildren().add(clearButton);
 
         clearButton.setOnAction(event -> {
@@ -250,8 +275,47 @@ public class HelloApplication extends Application {
             TextPath.clear();
 
         });
+        TextPath.setStyle(
+                "-fx-control-inner-background: #ffffff; " +  // Background color
+                        "-fx-font-size: 14px; " +                    // Font size
+                        "-fx-font-family: 'Arial'; " +               // Font family
+                        "-fx-text-fill: #333333; " +                 // Text color
+                        "-fx-border-color: #cccccc; " +              // Border color
+                        "-fx-border-width: 1px; " +                   // Border width
+                        "-fx-border-radius: 5px; " +                 // Border radius
+                        "-fx-padding: 5px;"                          // Padding
+        );
 
+        // Set inline styles for ComboBoxes
+        source.setStyle(
+                "-fx-control-inner-background: #e0f7fa; " +   // Background color
+                        "-fx-font-size: 14px; " +                     // Font size
+                        "-fx-font-family: 'Arial'; " +                // Font family
+                        "-fx-text-fill: #004d40; " +                  // Text color
+                        "-fx-border-color: #009688; " +               // Border color
+                        "-fx-border-width: 2px; " +                   // Border width
+                        "-fx-border-radius: 10px; " +                 // Border radius
+                        "-fx-padding: 5px; " +                        // Padding
+                        "-fx-background-insets: 0 0 0 25; " +        // Background insets
+                        "-fx-background-radius: 10px 0 0 10px; " +   // Background radius
+                        "-fx-background-color: linear-gradient(to right, #00acc1, #9ce8ec);" // Gradient background
+        );
 
+        Dist.setStyle(
+                "-fx-control-inner-background: #e0f7fa; " +
+                        "-fx-font-size: 14px; " +
+                        "-fx-font-family: 'Arial'; " +
+                        "-fx-text-fill: #004d40; " +
+                        "-fx-border-color: #009688; " +
+                        "-fx-border-width: 2px; " +
+                        "-fx-border-radius: 10px; " +
+                        "-fx-padding: 5px; " +
+                        "-fx-background-insets: 0 25 0 0; " +
+                        "-fx-background-radius: 0 10px 10px 0; " +
+                        "-fx-background-color: linear-gradient(to right, #00acc1, #9ce8ec);"
+        );
+
+        pane.setStyle("-fx-background-color: linear-gradient(to right, rgba(72,152,218,0.66), #a2e6ea);");
         pane.getChildren().addAll(TextPath, List, group);
         mainbox.getChildren().add(pane);
         Scene scene = new Scene(mainbox);
