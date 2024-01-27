@@ -11,20 +11,30 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HelloApplication extends Application {
-
+    Streets street;
     double width;
     double height;
+
+
+
+
+    private Line pathLine = new Line();
+
     String start;
     double y;
     double x;
@@ -47,28 +57,26 @@ public class HelloApplication extends Application {
         ImageView myImage = new ImageView(imgpath);
 
 
-        myImage.setFitWidth(375);
+        myImage.setFitWidth(500);
         myImage.setFitHeight(442);
 
         myImage.setLayoutX(195);
 
-        width =  myImage.getFitWidth();
+        width = myImage.getFitWidth();
         height = myImage.getFitHeight();
 
         Group group = new Group(myImage);
         double[] d = new double[2];
+        double[] st = new double[2];
+
         Graph g = new Graph();
-        BufferedReader br1 = new BufferedReader(new FileReader("C:\\Users\\ahmad\\Downloads\\1pro2+3\\DijkstraProject\\src\\Data\\Gaza.txt"));
-        BufferedReader br2 = new BufferedReader(new FileReader("C:\\Users\\ahmad\\Downloads\\1pro2+3\\DijkstraProject\\src\\Data\\coo.txt"));
+        BufferedReader br1 = new BufferedReader(new FileReader("C:\\Users\\ahmad\\Downloads\\1pro2+3\\DijkstraProject\\src\\Data\\gaza"));
+        BufferedReader br2 = new BufferedReader(new FileReader("C:\\Users\\ahmad\\Downloads\\1pro2+3\\DijkstraProject\\src\\Data\\coo"));
         String Line1;
         String Line2;
         boolean isStreets = false;
         int i = 0;
 
-        double minLongitude = Double.MAX_VALUE;
-        double maxLongitude = Double.MIN_VALUE;
-        double minLatitude = Double.MAX_VALUE;
-        double maxLatitude = Double.MIN_VALUE;
 
         Label src = new Label("Source");
         ComboBox<String> source = new ComboBox<>();
@@ -94,7 +102,6 @@ public class HelloApplication extends Application {
                 source.getItems().add(City);
                 Dist.getItems().add(City);
                 Button b = new Button();
-                b.setGraphic(new Label(City));
 
                 b.setOnAction(event -> {
                     if (!flag[0] == true) {
@@ -109,33 +116,69 @@ public class HelloApplication extends Application {
                 });
                 d[0] = convertLatLonToPixel(latitude, longitude)[0];
                 d[1] = convertLatLonToPixel(latitude, longitude)[1];
-//                d[0]=convertLatLonToPixel(latitude,longitude)[0];
-//                d[1]=convertLatLonToPixel(latitude,longitude)[1];
-                b.setLayoutX(d[0]);
-                b.setLayoutY(d[1]);
-//                b.setStyle(
-//                        "-fx-background-color: #4CAF50; " +
-//                                "-fx-text-fill: white; " +
-//                                "-fx-font-size: 14px; " +
-//                                "-fx-min-width: 40px; " +
-//                                "-fx-min-height: 40px; " +
-//                                "-fx-max-width: 40px; " +
-//                                "-fx-max-height: 40px; " +
-//                                "-fx-shape: 'M20 40 C8.954 40 0 31.046 0 20 S8.954 0 20 0s20 8.954 20 20s-8.954 20-20 20z';"
-//                );
+                b.setLayoutX(d[0] + 210);
+                b.setLayoutY(d[1] - 15);
+//                Label cityLabel = new Label(City);
+//                cityLabel.setLayoutX(d[0] + 220);
+//                cityLabel.setLayoutY(d[1] - 15);
+//                group.getChildren().add(cityLabel);
+//                cityLabel.setStyle("-fx-font-size: 10px;");
+                b.setStyle(
+                        "-fx-background-color: #fc7f8f; " +
+                                "-fx-text-fill: white; " +
+                                "-fx-font-size: 14px; " +
+                                "-fx-min-width: 8px; " +
+                                "-fx-min-height: 8px; " +
+                                "-fx-max-width: 8px; " +
+                                "-fx-max-height: 8px; " +
+                                "-fx-shape: 'M20 40 C8.954 40 0 31.046 0 20 S8.954 0 20 0s20 8.954 20 20s-8.954 20-20 20z';"
+                );
+                b.setOnMouseEntered(e -> {
+                    b.setStyle(
+                            "-fx-background-color: #73d4fc; " +
+                                    "-fx-text-fill: white; " +
+                                    "-fx-font-size: 14px; " +
+                                    "-fx-min-width: 12px; " +
+                                    "-fx-min-height: 12px; " +
+                                    "-fx-max-width: 12px; " +
+                                    "-fx-max-height: 12px; " +
+                                    "-fx-shape: 'M20 40 C8.954 40 0 31.046 0 20 S8.954 0 20 0s20 8.954 20 20s-8.954 20-20 20z';"
+                    );
+                    showTooltip(b, City);
+                });
+
+                b.setOnMouseExited(e -> {
+                    b.setStyle(
+                            "-fx-background-color: #fc7f8f; " +
+                                    "-fx-text-fill: white; " +
+                                    "-fx-font-size: 14px; " +
+                                    "-fx-min-width: 8px; " +
+                                    "-fx-min-height: 8px; " +
+                                    "-fx-max-width: 8px; " +
+                                    "-fx-max-height: 8px; " +
+                                    "-fx-shape: 'M20 40 C8.954 40 0 31.046 0 20 S8.954 0 20 0s20 8.954 20 20s-8.954 20-20 20z';");
+                    Tooltip tooltip = b.getTooltip();
+                    if (tooltip != null) {
+                        tooltip.hide();
+                    }
+                });
                 group.getChildren().add(b);
-//                System.out.println("City " + City);
             } else {
+                Button str = new Button();
                 String streets = data[0].trim();
                 double latitude = Double.parseDouble(data[1].trim());
                 double longitude = Double.parseDouble(data[2].trim());
+                st[0] = convertLatLonToPixel(latitude, longitude)[0] + 185;
+                st[1] = convertLatLonToPixel(latitude, longitude)[1] - 15;
+                str.setLayoutX(st[0]);
+                str.setLayoutY(st[1]);
+                street = new Streets(streets, st[0], st[1]);
+
                 Vertex v = new Vertex(streets, latitude, longitude);
                 g.addVertex(v);
-                //                System.out.println("Streets" + streets);
             }
         }
         Button find = new Button("Find shortest path");
-
 
 
         Dijkstra dijkstra = new Dijkstra();
@@ -145,35 +188,48 @@ public class HelloApplication extends Application {
             String s = source.getSelectionModel().getSelectedItem();
             start = s;
             Dist.setOnAction(event -> {
+
                 String ds = Dist.getSelectionModel().getSelectedItem();
                 printPath.addAll(dijkstra.ShortestPath(g, g.getVertexByName(start), g.getVertexByName(ds)));
-                find.setOnAction(action->{
+
+                find.setOnAction(action -> {
                     storepath.append("The Distance is " + printPath.get(0) + "\t");
+
                     for (int index = 1; index < printPath.size() - 1; index++) {
-                        Line line = new Line();
                         storepath.append(printPath.get(index) + "->");
+                        Vertex currentVertex = g.getVertexByName(printPath.get(index));
+                        Vertex nextVertex = g.getVertexByName(printPath.get(index + 1));
+
+                        if (nextVertex != null || currentVertex != null) {
+                            double[] currentCoords = convertLatLonToPixel(currentVertex.getLatitude(), currentVertex.getLongitude());
+                            double[] nextCoords = convertLatLonToPixel(nextVertex.getLatitude(), nextVertex.getLongitude());
+
+                            Line pathLineSegment = new Line(currentCoords[0] + 210, currentCoords[1] - 8, nextCoords[0] + 210, nextCoords[1] - 8);
+                            pathLineSegment.setStrokeWidth(2);
+
+                            if (index==printPath.size()-2){
+
+                                double angle = Math.toDegrees(Math.atan2(nextCoords[1] - currentCoords[1], nextCoords[0] - currentCoords[0]));
+
+                                Polygon arrowhead = createArrowhead(nextCoords[0] + 215, nextCoords[1] - 10, angle);
+                                arrowhead.setFill(Paint.valueOf("96E9C6"));
+                                group.getChildren().add(arrowhead);
+                            }
+
+                            group.getChildren().add(pathLineSegment);
+                        }
+
                     }
                     TextPath.setText(storepath + ds);
-                });
 
-                for (int index = 1; index < printPath.size() - 1; index++) {
-                    String cityName = printPath.get(index);
-                    Button cityButton = findButtonByCityName(group, cityName);
-                    if (cityButton != null) {
-                        Line line = new Line(x, y, cityButton.getLayoutX(), cityButton.getLayoutY());
-                        group.getChildren().add(line);
-                    }
-                }
+                });
             });
+            printPath.clear();
         });
 
 
-//        dijkstra.ShortestPath(g,g.getVertexByName(source.getSelectionModel().getSelectedItem()),
-//                g.getVertexByName(Dist.getSelectionModel().getSelectedItem()));
-
         while ((Line2 = br2.readLine()) != null) {
             String[] data = Line2.split(", ");
-//            System.out.println(g.getVertexByName(data[0]).getData());
             g.addEdge(g.getVertexByName(data[0]), g.getVertexByName(data[1]));
         }
 
@@ -185,6 +241,16 @@ public class HelloApplication extends Application {
         List.setPrefHeight(200);
 
         List.getChildren().addAll(src, source, dst, Dist, find);
+        Button clearButton = new Button("Clear");
+        List.getChildren().add(clearButton);
+
+        clearButton.setOnAction(event -> {
+
+            group.getChildren().removeIf(node -> node instanceof Line || node instanceof Polygon);
+            TextPath.clear();
+
+        });
+
 
         pane.getChildren().addAll(TextPath, List, group);
         mainbox.getChildren().add(pane);
@@ -196,6 +262,20 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+
+
+    private void clearPath(Group group, TextArea textArea) {
+        group.getChildren().removeIf(node -> node instanceof Line);
+        textArea.clear();
+    }
+    private Polygon createArrowhead(double x, double y, double angle) {
+        double arrowSize = 15;
+        Polygon arrowhead = new Polygon();
+        arrowhead.getPoints().addAll(x, y, x - arrowSize, y + arrowSize / 2, x - arrowSize-1, y - arrowSize / 2);
+        arrowhead.setRotate(angle);
+        return arrowhead;
     }
 
     private Button findButtonByCityName(Group group, String cityName) {
@@ -232,23 +312,32 @@ public class HelloApplication extends Application {
         return new double[]{xPixel, yPixel};
     }
 
-    private double[] latpixel(double latitude, double longitude) {
-        double mapWidth = width;
-        double mapHeight = height;
-        double mapMinLat = 31.21682524779672;
-        double mapMaxLat = 31.60666996149046;
-        double mapMinLon = 34.11915443676544;
-        double mapMaxLon = 34.5722355298608;
+    //    private double[] latpixel(double latitude, double longitude) {
+//        double mapWidth = width;
+//        double mapHeight = height;
+//        double mapMinLat = 31.21682524779672;
+//        double mapMaxLat = 31.60666996149046;
+//        double mapMinLon = 34.11915443676544;
+//        double mapMaxLon = 34.5722355298608;
+//
+//        double mapLongitude = mapMaxLon - mapMinLon;
+//        double mapLatitude = mapMinLat - mapMaxLat;
+//        longitude = longitude - mapMinLon;
+//        latitude = mapMinLat - latitude;
+//
+//        double x = (mapWidth * (longitude / mapLongitude));
+//        double y = (mapHeight * (latitude / mapLatitude));
+//
+//        return new double[]{x, y};
+//    }
+    private void showTooltip(Button button, String text) {
+        Tooltip tooltip = new Tooltip(text);
+        button.setTooltip(tooltip);
+        tooltip.show(button, button.localToScreen(button.getBoundsInLocal()).getMinX(), button.localToScreen(button.getBoundsInLocal()).getMinY() - 30);
+    }
 
-        double mapLongitude = mapMaxLon - mapMinLon;
-        double mapLatitude = mapMinLat - mapMaxLat;
-        longitude = longitude - mapMinLon;
-        latitude = mapMinLat - latitude;
-
-        double x = (mapWidth * (longitude / mapLongitude));
-        double y = (mapHeight * (latitude / mapLatitude));
-
-        return new double[]{x, y};
+    private void hideTooltip(Tooltip tooltip) {
+        tooltip.hide();
     }
 
 

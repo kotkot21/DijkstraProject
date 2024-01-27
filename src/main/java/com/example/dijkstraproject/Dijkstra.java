@@ -6,6 +6,7 @@ import java.util.*;
 public class Dijkstra {
     private final Double INF = Double.MAX_VALUE;
 
+    //T(n)=O(E+V)
     public static HashMap[] Dijkstra(Graph g, Vertex startVertex) {
 
         HashMap<String, Double> Distances = new HashMap<>();
@@ -48,23 +49,18 @@ public class Dijkstra {
         HashMap Previous = DijkstraMap[1];
         List<String> spath = new ArrayList<>();
 
-        double distance = (double) Distances.get(Target.getData()); // Use Target instead of Source here
+        double distance = (double) Distances.get(Target.getData());
         spath.add(String.valueOf(distance));
-        System.out.println("Distance Between " + Source.getData() + " and " + Target.getData());
-        System.out.println(distance);
-
         ArrayList<Vertex> path = new ArrayList<>();
         Vertex v = Target;
 
-        while (!v.getData().equals("NUll")) { // Correct the string comparison here
+        while (!v.getData().equals("NUll")) {
             path.add(0, v);
             v = (Vertex) Previous.get(v.getData());
         }
-        System.out.println("Shortest path");
         String[] arr = new String[path.size()];
         for (Vertex PathVertex : path) {
             spath.add(PathVertex.getData());
-            System.out.println(PathVertex.getData());
         }
         return spath;
     }
